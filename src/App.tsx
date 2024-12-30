@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LogInForm from "./components/LogIn/LogInForm";
+import LogInForm from "./components/login/LogInForm";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
-import Layout from "./components/LayOut/Layout";
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
