@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "./SideBar";
+import { Sidebar } from "./Sidebar";
 
-const Layout = () => {
+export const Layout: React.FC = () => {
   return (
     <div className="flex h-screen">
       <div>
@@ -13,5 +13,3 @@ const Layout = () => {
     </div>
   );
 };
-
-export default Layout;

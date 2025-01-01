@@ -3,7 +3,7 @@ import {
   ArrowLeftIcon,
   EllipsisVerticalIcon,
 } from "@heroicons/react/24/outline";
-import { Button } from "../../shared/Button";
+import { Button } from "../shared/Button";
 
 interface ISideBarProps {
   children: React.JSX.Element;
@@ -11,11 +11,11 @@ interface ISideBarProps {
   setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SidebarContainer = ({
+export const SidebarContainer: React.FC<ISideBarProps> = ({
   children,
   expanded,
   setExpanded,
-}: ISideBarProps) => {
+}) => {
   return (
     <div className="relative">
       <div
@@ -31,7 +31,7 @@ export const SidebarContainer = ({
         <nav className="flex h-full flex-col border-r bg-white shadow-sm">
           <div className="flex items-center justify-between p-4 pb-2">
             <img
-              src="https://img.logoipsum.com/243.svg"
+              src="src/assets/logo.png"
               className={`overflow-hidden transition-all ${
                 expanded ? "w-32" : "w-0"
               }`}

@@ -1,16 +1,14 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { ProtectedRoute } from "./ProtectedRoute";
-import LogInForm from "../components/login/LogInForm";
-import Home from "../pages/Home";
-import Dashboard from "../pages/Dashboard";
-import Settings from "../pages/Settings";
+import { LoginForm } from "../components";
+import { Home, Dashboard, Settings } from "../pages";
 
 const Routes = () => {
   const publicRoutes = [
     {
       path: "/logIn",
-      element: <LogInForm />,
+      element: <LoginForm />,
     },
     // {
     //   path: "/about-us",
