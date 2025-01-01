@@ -1,0 +1,65 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "First Task",
+      "description": "This is the first test Task",
+      "dueDate": "2024-12-31T23:59:59.000Z",
+      "priority": "High",
+      "assign": "Bora Selenica",
+      "reporter": "Lori Selenica",
+      "type": "Feature",
+      "comments": "New Feature for Task Management",
+      "attachment": "photo",
+      "status": "In Progress"
+    },
+    {
+      "id": 2,
+      "title": "Second Task",
+      "description": "This is the second test Task",
+      "dueDate": "2024-12-31T23:59:59.000Z",
+      "priority": "Medium",
+      "assign": "Lori Selenica",
+      "reporter": "BR Selenica",
+      "type": "Feature",
+      "comments": "New Feature for Task Management",
+      "attachment": "file",
+      "status": "In Review"
+    },
+    {
+      "id": 3,
+      "title": "Create Filter Component",
+      "description": "Create Filter Component for Task Management, global filet...",
+      "dueDate": "2025-01-05T23:59:59.000Z",
+      "priority": "Low",
+      "assign": "Eni Selenica",
+      "reporter": "BR Selenica",
+      "type": "Bug",
+      "comments": "New Feature for Task Management",
+      "attachment": "file",
+      "status": "In Review"
+    },
+    {
+      "id": 4,
+      "title": "Create Kanban Component",
+      "description": "Create kanban Component for Task Management.",
+      "dueDate": "2025-04-05T23:59:59.000Z",
+      "priority": "High",
+      "assign": "user1",
+      "reporter": "BR Selenica",
+      "type": "Feature",
+      "comments": "New Feature for Task Management",
+      "attachment": "file",
+      "status": "Done"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "boratest",
+      "password": "test",
+      "email": "test@gmail.com",
+      "role": "admin"
+    }
+  ]
+}

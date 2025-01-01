@@ -9,5 +9,5 @@ export interface TaskTypes {
   type: "Feature" | "Bug" | "Research";
   comments: string;
   attachment: string;
-  status: "Not Started" | "In Progress" | "Completed" | "Blocked";
+  status: "To Do" | "In Progress" | "In Review" | "Done";
 }
