@@ -5,10 +5,11 @@ import {
   UserIcon,
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { SidebarItem } from "./SidebarItem";
-import { SidebarContainer } from "./SidebarContainer";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../store/actions";
+import { SidebarContainer } from "./SidebarContainer";
+import { SidebarItem } from "./SidebarItem";
 
 export const Sidebar: React.FC = () => {
   const [expanded, setExpanded] = useState(true);

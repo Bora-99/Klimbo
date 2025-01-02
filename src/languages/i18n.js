@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import enLang from "./languages/en/en.json";
-import sqLang from "./languages/sq/sq.json";
+import enLang from "./en/en.json";
+import sqLang from "./sq/sq.json";
 
 const language = localStorage.getItem("i18nextLng");
 

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { TaskTypes } from "../../types/task";
+import { TaskTypes } from "../../../types/task";
 
 interface TaskTableProps {
   tasks: TaskTypes[];

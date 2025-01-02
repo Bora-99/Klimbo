@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { TaskTable } from "./TaskTable";
+import { TaskTable } from "./task/TaskTable";
 import axios from "axios";
 import { TaskTypes } from "../../types/task";
-import { Calendar } from "./calendarBoard/Calendar";
+import { Calendar } from "./calendar/Calendar";
 import { Button } from "../shared";
 import { API } from "../../constants";
 import { useTranslation } from "react-i18next";

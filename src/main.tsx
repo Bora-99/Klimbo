@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { createRoot } from "react-dom/client";
 
 import "./index.css";
-import "./i18n";
+import "./languages/i18n.js";
 
 import App from "./App.tsx";
 import { store } from "./store/store.ts";
