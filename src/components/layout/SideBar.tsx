@@ -7,11 +7,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { SidebarItem } from "./SidebarItem";
 import { SidebarContainer } from "./SidebarContainer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { logout } from "../../store/actions";
 
 export const Sidebar: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const activeTab = useMemo(
     () => location.pathname.split("/")[1],
@@ -35,6 +37,10 @@ export const Sidebar: React.FC = () => {
       {
         icon: <ArrowRightStartOnRectangleIcon />,
         text: "Logout",
+        onCustomClick: () => {
+          logout();
+          navigate("/login");
+        },
       },
     ],
     []

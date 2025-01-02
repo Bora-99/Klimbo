@@ -1,22 +1,22 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { ProtectedRoute } from "./ProtectedRoute";
-import { LoginForm } from "../components";
-import { Home, Dashboard, Settings } from "../pages";
+import { Home, Dashboard, Settings, ErrorSection } from "../pages";
+import LoginForm from "../components/login/LoginForm";
 
 const Routes = () => {
   const publicRoutes = [
     {
-      path: "/logIn",
+      path: "/login",
       element: <LoginForm />,
     },
-    // {
-    //   path: "/about-us",
-    //   element: <div>About Us</div>,
-    // },
+    {
+      path: "*",
+      element: <ErrorSection />,
+    },
   ];
 
-  const routesForNotAuthenticatedOnly = [
+  const routesForAuthenticatedOnly = [
     {
       path: "/",
       element: <ProtectedRoute />,
@@ -39,7 +39,7 @@ const Routes = () => {
 
   const router = createBrowserRouter([
     ...publicRoutes,
-    ...routesForNotAuthenticatedOnly,
+    ...routesForAuthenticatedOnly,
   ]);
 
   return <RouterProvider router={router} />;

@@ -1,11 +1,12 @@
-import { useTranslation } from "react-i18next";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 interface SidebarItemProps {
   icon: React.ReactNode;
   text: string;
   expanded: boolean;
   activeMenu: string;
+  onCustomClick?: () => void;
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({
@@ -13,9 +14,18 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   text,
   expanded = false,
   activeMenu,
+  onCustomClick,
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const onHandlerClick = useCallback(() => {
+    if (onCustomClick) {
+      onCustomClick();
+    } else {
+      navigate(`/${text.toLowerCase()}`);
+    }
+  }, [navigate, onCustomClick, text]);
 
   return (
     <li>
@@ -31,7 +41,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
          }
          ${!expanded && "hidden sm:flex"}
      `}
-        onClick={() => navigate(`/${text.toLowerCase()}`)}
+        onClick={onHandlerClick}
       >
         <span className="h-6 w-6">{icon}</span>
 
