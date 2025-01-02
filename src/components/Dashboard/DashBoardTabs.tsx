@@ -5,6 +5,7 @@ import { TaskTypes } from "../../types/task";
 import { Calendar } from "./calendarBoard/Calendar";
 import { Button } from "../shared";
 import { API } from "../../constants";
+import { useTranslation } from "react-i18next";
 
 interface IRenderTabs {
   kanban: JSX.Element;
@@ -14,14 +15,15 @@ interface IRenderTabs {
 
 export const DashboardTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<keyof IRenderTabs>("table");
+  const { t } = useTranslation();
 
   const tabs = useMemo(
     () => [
-      { id: "table", label: "Table" },
-      { id: "kanban", label: "Kanban" },
-      { id: "calendar", label: "Calendar" },
+      { id: "table", label: t("table") },
+      { id: "kanban", label: t("kanban") },
+      { id: "calendar", label: t("calendar") },
     ],
-    []
+    [t]
   );
 
   const [tasks, setTasks] = useState<TaskTypes[]>([]);

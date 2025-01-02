@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 interface SidebarItemProps {
@@ -14,6 +15,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   activeMenu,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <li>
@@ -38,7 +40,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
             expanded ? "ml-3 w-44" : "w-0"
           }`}
         >
-          {text}
+          {t(text)}
         </span>
 
         {!expanded && (

@@ -4,6 +4,7 @@ import {
   EllipsisVerticalIcon,
 } from "@heroicons/react/24/outline";
 import { Button } from "../shared/Button";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 interface ISideBarProps {
   children: React.JSX.Element;
@@ -51,6 +52,8 @@ export const SidebarContainer: React.FC<ISideBarProps> = ({
             </div>
           </div>
           <ul className="flex-1 px-3">{children}</ul>
+          <LanguageSwitcher />
+
           <div className="flex border-t p-3">
             <img
               src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true&name=Mark+Ruffalo"
