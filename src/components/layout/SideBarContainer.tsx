@@ -16,7 +16,11 @@ export const SidebarContainer: React.FC<ISideBarProps> = ({
   children,
   expanded,
   setExpanded,
-}) => {
+} ) =>
+{
+  
+  const user = JSON.parse(sessionStorage.getItem("user") ?? "");
+
   return (
     <div className="relative">
       <div
@@ -52,14 +56,12 @@ export const SidebarContainer: React.FC<ISideBarProps> = ({
             </div>
           </div>
           <ul className="flex-1 px-3">{children}</ul>
-          <LanguageSwitcher />
+          <LanguageSwitcher expanded={expanded} />
 
           <div className="flex border-t p-3">
-            <img
-              src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true&name=Mark+Ruffalo"
-              alt=""
-              className="h-10 w-10 rounded-md"
-            />
+            <div className="flex justify-center items-center content-center bg-[#c7d2fe] h-10 w-10  rounded-md">
+              {user.username.charAt(0).toUpperCase()}
+            </div>
             <div
               className={`
                 flex items-center justify-between
@@ -67,8 +69,8 @@ export const SidebarContainer: React.FC<ISideBarProps> = ({
             `}
             >
               <div className="leading-4">
-                <h4 className="font-semibold">Mark Ruffalo</h4>
-                <span className="text-xs text-gray-600">mark@gmail.com</span>
+                <h4 className="font-semibold">{user.username}</h4>
+                <span className="text-xs text-gray-600">{user.email}</span>
               </div>
               <EllipsisVerticalIcon className="h-6 w-6" />
             </div>

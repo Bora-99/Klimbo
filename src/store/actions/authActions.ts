@@ -21,14 +21,18 @@ export const loginUser = createAsyncThunk<IUserData, LoginArgs>(
     if (currentUser) {
       const generateToken = uuidv4();
       sessionStorage.setItem("token", generateToken);
+      const user = {
+        username: currentUser.username,
+        role: currentUser.role,
+        email: currentUser.email,
+      };
+      sessionStorage.setItem("user", JSON.stringify(user));
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${generateToken}`;
 
       return {
-        username: currentUser.username,
-        role: currentUser.role,
-        email: currentUser.email,
+        ...user,
       };
     } else {
       throw Error("user not found");
@@ -38,6 +42,7 @@ export const loginUser = createAsyncThunk<IUserData, LoginArgs>(
 
 export const logout = (): void => {
   sessionStorage.removeItem("token");
-  localStorage.removeItem("i18nextLng");
+  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("i18nextLng");
   delete axios.defaults.headers.common["Authorization"];
 };

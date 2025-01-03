@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next";
 import enLang from "./en/en.json";
 import sqLang from "./sq/sq.json";
 
-const language = localStorage.getItem("i18nextLng");
+const language = sessionStorage.getItem("i18nextLng");
 
 const resources = {
   en: {

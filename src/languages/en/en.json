@@ -12,6 +12,6 @@
   "status": "Status",
   "actions": "Actions",
   "priority": "Priority",
-  "assignee": "Assignee"
-
+  "assignee": "Assignee",
+  "pieChart": "Pie Chart"
 }

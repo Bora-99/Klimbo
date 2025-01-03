@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 interface TaskCardProps {
   title: string;
@@ -7,24 +7,31 @@ interface TaskCardProps {
   priority: string;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({
+export const TaskCard: React.FC<TaskCardProps> = ({
   title,
   description,
   type,
   priority,
 }) => {
+  const backgroundColor = useMemo(() => {
+    switch (priority) {
+      case "High":
+        return "bg-red-100 text-red-600";
+      case "Medium":
+        return "bg-yellow-100 text-yellow-600";
+      case "Low":
+        return "bg-green-100 text-green-600";
+      default:
+        return "bg-gray-100 text-gray-600";
+    }
+  }, [priority]);
+
   return (
-    <div className="w-80 h-48 rounded overflow-hidden shadow-lg bg-white border border-gray-200 p-4">
+    <div className="w-64 min-h-48 rounded overflow-hidden shadow-lg bg-white border border-gray-200 p-4">
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
         <span
-          className={`text-xs font-bold px-2 py-1 rounded ${
-            priority === "High"
-              ? "bg-red-100 text-red-600"
-              : priority === "Medium"
-              ? "bg-yellow-100 text-yellow-600"
-              : "bg-green-100 text-green-600"
-          }`}
+          className={`text-xs font-bold px-2 py-1 rounded ${backgroundColor}`}
         >
           {priority}
         </span>
@@ -41,5 +48,3 @@ const TaskCard: React.FC<TaskCardProps> = ({
     </div>
   );
 };
-
-export default TaskCard;

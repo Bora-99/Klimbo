@@ -22,7 +22,6 @@ export default function LoginForm() {
         await dispatch(loginUser({ email, password })).unwrap();
         navigate("/dashboard");
       } catch (error: any) {
-        console.log(error, "ere");
         setErrorMessage("Failed to login. Please check your credentials.");
       }
     },

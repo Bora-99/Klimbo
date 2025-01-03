@@ -12,5 +12,6 @@
   "status": "Statusi",
   "actions": "Veprimet",
   "priority": "Prioriteti",
-  "assignee": "Dërguesi"
+  "assignee": "Dërguesi",
+  "pieChart": "Grafik"
 }

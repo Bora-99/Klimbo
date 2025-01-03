@@ -23,6 +23,7 @@ export const Calendar: React.FC<CalendarProps> = ({ tasks }) => {
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
       events={events}
+      height={700}
     />
   );
 };
