@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import { TaskTypes } from "../../../types/task";
+import { ITaskTypes } from "../../../types";
 
 interface CalendarProps {
-  tasks: TaskTypes[];
+  tasks: ITaskTypes[];
 }
 
 export const Calendar: React.FC<CalendarProps> = ({ tasks }) => {

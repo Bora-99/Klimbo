@@ -1,6 +1,5 @@
 import React from "react";
-import { DashboardTabs } from "../components/dashboard/DashBoardTabs";
-
+import { DashBoardHeader } from "../components/dashboard/DashBoardHeader";
 export const Dashboard: React.FC = () => {
-  return <DashboardTabs />;
+  return <DashBoardHeader />;
 };

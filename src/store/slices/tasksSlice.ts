@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTasks } from "../actions";
-import { TaskTypes } from "../../types/task";
+import { fetchTasks, postTask } from "../actions";
+import { ITaskTypes } from "../../types";
 
 export interface ITasksData {
-  tasks: TaskTypes[];
+  tasks: ITaskTypes[];
 }
 
 const initialState: ITasksData = {
@@ -17,6 +17,9 @@ const tasksSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchTasks.fulfilled, (state, action) => {
       state.tasks = action.payload;
+    });
+    builder.addCase(postTask.fulfilled, (state, action) => {
+      state.tasks = [...state.tasks, action.payload];
     });
   },
 });

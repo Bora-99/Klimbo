@@ -6,5 +6,12 @@
   "Logout": "Logout",
   "table": "Table",
   "kanban": "Kanban",
-  "calendar": "Calendar"
+  "calendar": "Calendar",
+  "title": "Title",
+  "dueDate": "Due Date",
+  "status": "Status",
+  "actions": "Actions",
+  "priority": "Priority",
+  "assignee": "Assignee"
+
 }

@@ -1,15 +1,42 @@
-import { useMemo } from "react";
-import { TaskTypes } from "../../../types/task";
+import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { ITaskTypes } from "../../../types";
+import { deleteTask } from "../../../store/actions";
+import { TaskModal } from "./TaskModal";
+import { Modal } from "../../shared";
+import { useAppDispatch } from "../../../store";
 
 interface TaskTableProps {
-  tasks: TaskTypes[];
+  tasks: ITaskTypes[];
 }
 
 export const TaskTable: React.FC<TaskTableProps> = ({ tasks }) => {
+  const { t } = useTranslation();
+
+  const [open, setOpen] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
+  const [editTask, setEditTask] = useState<ITaskTypes | undefined>(undefined);
+
   const columns = useMemo(
-    () => ["Title", "Due Date", "Priority", "Assignee", "Status"],
-    []
+    () => [
+      t("title"),
+      t("dueDate"),
+      t("priority"),
+      t("assignee"),
+      t("status"),
+      t("actions"),
+    ],
+    [t]
   );
+  const dispatch = useAppDispatch();
+
+  const handleDelete = (taskId: string) => {
+    dispatch(deleteTask(taskId));
+    setOpenDeleteModal(false);
+  };
+
   return (
     <div className="overflow-x-auto px-4 py-6">
       <table className="min-w-full table-auto border-collapse bg-white rounded-lg shadow-md">
@@ -51,7 +78,7 @@ export const TaskTable: React.FC<TaskTableProps> = ({ tasks }) => {
                   className={`px-2 py-1 text-xs font-semibold rounded-full ${
                     task.status === "In Progress"
                       ? "bg-blue-200 text-blue-800"
-                      : task.status === "Completed"
+                      : task.status === "Done"
                       ? "bg-green-200 text-green-800"
                       : "bg-gray-200 text-gray-800"
                   }`}
@@ -59,10 +86,59 @@ export const TaskTable: React.FC<TaskTableProps> = ({ tasks }) => {
                   {task.status}
                 </span>
               </td>
+              <td className="px-4 py-2 text-gray-700 space-x-3">
+                <button
+                  onClick={() => {
+                    setEditTask(task);
+                    setOpenDeleteModal(true);
+                  }}
+                  className="h-6 w-6 text-red-500"
+                >
+                  <TrashIcon />
+                </button>
+                <button
+                  onClick={() => {
+                    setEditTask(task);
+                    setOpen(true);
+                  }}
+                  className="h-6 w-6 text-blue-500"
+                >
+                  <PencilIcon />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <TaskModal open={open} setOpen={setOpen} editMode={editTask} />
+
+      <Modal
+        open={openDeleteModal}
+        setOpen={setOpenDeleteModal}
+        title={"Delete Task"}
+      >
+        <>
+          <p>Are you shore you want to delete this task?</p>
+
+          <div className="mt-6 flex items-center justify-end gap-x-6">
+            <button
+              type="button"
+              className="text-sm/6 font-semibold text-gray-900"
+              onClick={() => setOpenDeleteModal(false)}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDelete(editTask?.id || "")}
+              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Save
+            </button>
+          </div>
+        </>
+      </Modal>
     </div>
   );
 };

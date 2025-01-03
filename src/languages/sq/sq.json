@@ -6,5 +6,11 @@
   "Logout": "Dil",
   "table": "Tabel",
   "kanban": "Grid",
-  "calendar": "Kalendar"
+  "calendar": "Kalendar",
+  "title": "Titulli",
+  "dueDate": "Data",
+  "status": "Statusi",
+  "actions": "Veprimet",
+  "priority": "Prioriteti",
+  "assignee": "Dërguesi"
 }

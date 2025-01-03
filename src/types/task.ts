@@ -1,5 +1,5 @@
-export interface TaskTypes {
-  id: number;
+export interface ITaskTypes {
+  id: string;
   title: string;
   description: string;
   dueDate: string;
@@ -10,4 +10,5 @@ export interface TaskTypes {
   comments: string;
   attachment: string;
   status: "To Do" | "In Progress" | "In Review" | "Done";
+  linkedIssues: "Blocks" | "Is Blocked By" | "Relates To";
 }

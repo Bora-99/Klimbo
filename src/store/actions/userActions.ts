@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API } from "../../constants";
+import { API } from "../../constants/endpoints";
 import { IUserTypes } from "../../types/user";
 
 export const fetchUsers = createAsyncThunk("fetchUsers", async (_, _thunk) => {
