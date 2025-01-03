@@ -11,11 +11,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useMemo } from "react";
 import { SelectInput } from "../shared";
 import { LanguageOptions } from "../../constants";
-import {  useHomePage, useLanguageCode } from "../../hooks";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useHomePage, useLanguageCode } from "../../hooks";
 
 export const Navbar: React.FC = () => {
   const { changeLanguage } = useLanguageCode();
@@ -33,7 +29,6 @@ export const Navbar: React.FC = () => {
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
@@ -54,13 +49,9 @@ export const Navbar: React.FC = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    aria-current={item.current ? "page" : undefined}
-                    className={classNames(
-                      item.current
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "rounded-md px-3 py-2 text-sm font-medium"
-                    )}
+                    className={
+                      "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    }
                   >
                     {item.name}
                   </a>
@@ -73,18 +64,16 @@ export const Navbar: React.FC = () => {
               id={"language"}
               options={LanguageOptions}
               label={""}
-              onSelect={(e) => changeLanguage(e.target)}
+              onChange={(e) => changeLanguage(e.target.value)}
             />
             <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
-                  <img
-                    alt=""
-                    src={user.username.charAt(0).toUpperCase()}
-                    className="size-8 rounded-full"
-                  />
+                  <div className="flex justify-center items-center content-center bg-[#c7d2fe] h-10 w-10  rounded-md">
+                    {user.username.charAt(0).toUpperCase()}
+                  </div>
                 </MenuButton>
               </div>
               <MenuItems
@@ -112,13 +101,9 @@ export const Navbar: React.FC = () => {
               key={item.name}
               as="a"
               href={item.href}
-              aria-current={item.current ? "page" : undefined}
-              className={classNames(
-                item.current
-                  ? "bg-gray-900 text-white"
-                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                "block rounded-md px-3 py-2 text-base font-medium"
-              )}
+              className={
+                "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              }
             >
               {item.name}
             </DisclosureButton>

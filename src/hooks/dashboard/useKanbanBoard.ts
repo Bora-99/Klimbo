@@ -4,6 +4,7 @@ import {
   useAppSelector,
   RootState,
   useAppDispatch,
+  editTask,
 } from "../../store";
 
 export const useKanbanBoard = () => {
@@ -57,7 +58,9 @@ export const useKanbanBoard = () => {
       destinationColumn.items.splice(destination.index, 0, draggedItem);
     }
 
-    // dispatch(updateStatus(columns));
+    dispatch(
+      editTask({ ...draggedItem, status: destinationColumn.title as any })
+    );
   };
 
   return {

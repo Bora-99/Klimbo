@@ -23,12 +23,7 @@ export const KanbanItem: React.FC<IKanbanItemProps> = ({ id, index, item }) => {
             borderRadius: "8px",
           }}
         >
-          <TaskCard
-            title={item.title}
-            description={item.description}
-            type={item.type}
-            priority={item.priority}
-          />
+          <TaskCard item={item} />
         </div>
       )}
     </Draggable>

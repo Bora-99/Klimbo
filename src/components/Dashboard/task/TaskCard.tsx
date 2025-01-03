@@ -1,18 +1,17 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import { ITaskTypes } from "../../../types";
+import { TaskModal } from "./TaskModal";
+import { useTranslation } from "react-i18next";
 
 interface TaskCardProps {
-  title: string;
-  description: string;
-  type: string;
-  priority: string;
+  item: ITaskTypes;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({
-  title,
-  description,
-  type,
-  priority,
-}) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ item }) => {
+  const { title, description, type, priority } = item;
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
   const backgroundColor = useMemo(() => {
     switch (priority) {
       case "High":
@@ -27,24 +26,30 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   }, [priority]);
 
   return (
-    <div className="w-64 min-h-48 rounded overflow-hidden shadow-lg bg-white border border-gray-200 p-4">
-      <div className="flex justify-between items-center">
-        <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        <span
-          className={`text-xs font-bold px-2 py-1 rounded ${backgroundColor}`}
-        >
-          {priority}
-        </span>
+    <>
+      <div className="w-64 min-h-48 rounded overflow-hidden shadow-lg bg-white border border-gray-200 p-4">
+        <div className="flex justify-between items-center">
+          <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+          <span
+            className={`text-xs font-bold px-2 py-1 rounded ${backgroundColor}`}
+          >
+            {priority}
+          </span>
+        </div>
+        <p className="text-gray-600 mt-2">{description}</p>
+        <div className="mt-4 flex justify-between items-center">
+          <span className="text-sm font-medium px-3 py-1 bg-blue-100 text-blue-600 rounded-full">
+            {type}
+          </span>
+          <button
+            className="text-sm text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded"
+            onClick={() => setOpen(true)}
+          >
+            {t("viewDetails")}
+          </button>
+        </div>
       </div>
-      <p className="text-gray-600 mt-2">{description}</p>
-      <div className="mt-4 flex justify-between items-center">
-        <span className="text-sm font-medium px-3 py-1 bg-blue-100 text-blue-600 rounded-full">
-          {type}
-        </span>
-        <button className="text-sm text-white bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
-          View Details
-        </button>
-      </div>
-    </div>
+      <TaskModal open={open} setOpen={setOpen} editMode={item} viewMode />
+    </>
   );
 };

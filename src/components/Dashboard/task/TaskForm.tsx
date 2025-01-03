@@ -19,12 +19,22 @@ import { TaskComments } from "./TaskComments";
 interface ITaskFormProps {
   editMode?: ITaskTypes;
   setOpen: (value: boolean) => void;
+  viewMode?: boolean;
 }
 
-export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
+export const TaskForm: React.FC<ITaskFormProps> = ({
+  editMode,
+  setOpen,
+  viewMode,
+}) => {
   const dispatch = useAppDispatch();
 
   const users = useAppSelector((state) => state.users.users);
+
+  const userOptions = users.map((user) => ({
+    label: user.username,
+    value: user.username,
+  }));
 
   const [formData, setFormData] = useState<ITaskTypes>(editMode ?? InitialTask);
 
@@ -53,9 +63,11 @@ export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
           }));
         },
         id: id,
+        required: typeof formData?.[id] === "object" ? false : !formData?.[id],
+        disabled: viewMode,
       };
     },
-    [formData]
+    [formData, viewMode]
   );
 
   return (
@@ -76,7 +88,7 @@ export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
             </div>
 
             <div className="sm:col-span-3">
-              <Input label="Due Date" id="dueDate" type="date" />
+              <Input label="Due Date" type="date" {...fieldProps("dueDate")} />
             </div>
 
             <div className="sm:col-span-3">
@@ -88,11 +100,19 @@ export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
             </div>
 
             <div className="sm:col-span-3">
-              <Input label="Assignee" {...fieldProps("assign")} />
+              <SelectInput
+                label="Assignee"
+                options={userOptions}
+                {...fieldProps("assign")}
+              />
             </div>
 
             <div className="sm:col-span-3">
-              <Input label="Reporter" {...fieldProps("reporter")} />
+              <SelectInput
+                label="Reporter"
+                options={userOptions}
+                {...fieldProps("reporter")}
+              />
             </div>
 
             <div className="sm:col-span-3">
@@ -171,12 +191,14 @@ export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
         >
           Cancel
         </button>
-        <button
-          type="submit"
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
+        {!viewMode && (
+          <button
+            type="submit"
+            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Save
+          </button>
+        )}
       </div>
     </form>
   );
