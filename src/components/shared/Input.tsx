@@ -3,7 +3,7 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
 }
 
-export const Input = (props: IInputProps) => {
+export const Input: React.FC<IInputProps> = (props) => {
   const { label, id, ...rest } = props;
   return (
     <div>

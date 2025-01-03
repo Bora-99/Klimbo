@@ -7,8 +7,14 @@ export interface ITaskTypes {
   assign: string;
   reporter: string;
   type: "Feature" | "Bug" | "Research";
-  comments: string;
+  comments?: ICommentsType[];
   attachment: string;
   status: "To Do" | "In Progress" | "In Review" | "Done";
   linkedIssues: "Blocks" | "Is Blocked By" | "Relates To";
+}
+
+export interface ICommentsType {
+  text: string;
+  author: string;
+  date: string;
 }

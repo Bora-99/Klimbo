@@ -8,12 +8,15 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const PieChart: React.FC = () => {
   const { chartData } = useChartData();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
-  return (
+
+  return chartData.datasets[0].data.length > 0 ? (
     <div className="max-w-sm w-150 h-100 rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200 p-4 mx-auto">
-      <h2 className="text-center text-xl font-bold mb-4">{t("pieChart") }</h2>
+      <h2 className="text-center text-xl font-bold mb-4">{t("pieChart")}</h2>
       <Pie data={chartData} />
     </div>
+  ) : (
+    <div />
   );
 };

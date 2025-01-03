@@ -24,6 +24,13 @@ export const LinkedIssues = [
   { label: "Relates To", value: "Relates To" },
 ];
 
+export const LanguageOptions = [
+  { label: "English", value: "en" },
+  { label: "Albanian", value: "sq" },
+];
+
+export const tabletBreakpoint = 1300;
+
 export const InitialTask: ITaskTypes = {
   id: uuidv4(),
   title: "",
@@ -33,7 +40,6 @@ export const InitialTask: ITaskTypes = {
   assign: "",
   reporter: "",
   type: "Feature",
-  comments: "",
   attachment: "",
   status: "To Do",
   linkedIssues: "Relates To",

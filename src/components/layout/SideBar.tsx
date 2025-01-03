@@ -32,10 +32,6 @@ export const Sidebar: React.FC = () => {
         text: "Dashboard",
       },
       {
-        icon: <CogIcon />,
-        text: "Settings",
-      },
-      {
         icon: <ArrowRightStartOnRectangleIcon />,
         text: "Logout",
         onCustomClick: () => {
@@ -44,7 +40,7 @@ export const Sidebar: React.FC = () => {
         },
       },
     ],
-    []
+    [navigate]
   );
 
   return (

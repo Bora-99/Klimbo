@@ -13,5 +13,8 @@
   "actions": "Veprimet",
   "priority": "Prioriteti",
   "assignee": "Dërguesi",
-  "pieChart": "Grafik"
+  "pieChart": "Grafik",
+  "comments": "Komentet",
+  "addComment": "Shto Koment",
+  "existingComments": "Komentet Ekzistuese"
 }

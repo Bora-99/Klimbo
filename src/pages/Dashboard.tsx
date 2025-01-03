@@ -1,5 +1,8 @@
 import React from "react";
-import { DashBoardHeader } from "../components/dashboard/DashBoardHeader";
+import { useFetchTask } from "../hooks";
+import { DashboardTabs } from "../components";
+
 export const Dashboard: React.FC = () => {
-  return <DashBoardHeader />;
+  useFetchTask();
+  return <DashboardTabs />;
 };

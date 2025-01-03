@@ -6,10 +6,15 @@ import {
   TaskTypes,
   InitialTask,
 } from "../../../constants";
-import { editTask, postTask, useAppDispatch } from "../../../store";
-import SelectInput from "../../shared/SelectInput";
-import { TextArea, Input } from "../../shared";
-import { ITaskTypes } from "../../../types";
+import {
+  editTask,
+  postTask,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../store";
+import { TextArea, Input, SelectInput } from "../../shared";
+import { ICommentsType, ITaskTypes } from "../../../types";
+import { TaskComments } from "./TaskComments";
 
 interface ITaskFormProps {
   editMode?: ITaskTypes;
@@ -18,6 +23,8 @@ interface ITaskFormProps {
 
 export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
   const dispatch = useAppDispatch();
+
+  const users = useAppSelector((state) => state.users.users);
 
   const [formData, setFormData] = useState<ITaskTypes>(editMode ?? InitialTask);
 
@@ -34,7 +41,7 @@ export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
   const fieldProps = useCallback(
     (id: keyof ITaskTypes) => {
       return {
-        value: formData?.[id],
+        value: typeof formData?.[id] === "object" ? "" : formData?.[id],
         onChange: (
           e: React.ChangeEvent<
             HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -111,7 +118,16 @@ export const TaskForm: React.FC<ITaskFormProps> = ({ editMode, setOpen }) => {
             </div>
 
             <div className="col-span-full">
-              <TextArea label="Comments" rows={3} {...fieldProps("comments")} />
+              <TaskComments
+                comments={formData?.comments}
+                addNewComments={(comment: ICommentsType) => {
+                  setFormData((prev) => ({
+                    ...prev,
+                    comments: [...(prev.comments || []), comment],
+                  }));
+                }}
+                users={users}
+              />
             </div>
 
             <div className="col-span-full">

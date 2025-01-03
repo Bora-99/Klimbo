@@ -3,7 +3,7 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   types?: "primary" | "secondary";
 }
 
-export const Button = (props: IButtonProps) => {
+export const Button: React.FC<IButtonProps> = (props) => {
   const { children, types } = props;
 
   return (

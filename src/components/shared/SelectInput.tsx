@@ -1,13 +1,13 @@
-import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import React from "react";
+import { ChevronDownIcon } from "@heroicons/react/16/solid";
 
-interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+interface ISelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   id: string;
   options: Array<{ value: string; label: string }>;
 }
 
-export default function SelectInput(props: SelectProps) {
+export const SelectInput: React.FC<ISelectProps> = (props) => {
   const { label, id, options, ...rest } = props;
 
   return (
@@ -39,4 +39,4 @@ export default function SelectInput(props: SelectProps) {
       />
     </div>
   );
-}
+};

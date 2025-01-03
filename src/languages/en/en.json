@@ -13,5 +13,8 @@
   "actions": "Actions",
   "priority": "Priority",
   "assignee": "Assignee",
-  "pieChart": "Pie Chart"
+  "pieChart": "Pie Chart",
+  "comments": "Comments",
+  "addComment": "Add Comment",
+  "existingComments": "Existing Comments"
 }
