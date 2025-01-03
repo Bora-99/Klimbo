@@ -17,5 +17,8 @@
   "comments": "Comments",
   "addComment": "Add Comment",
   "existingComments": "Existing Comments",
-  "viewDetails": "View Details"
+  "viewDetails": "View Details",
+  "addFile": "Add File",
+  "attachments": "Attachments",
+  "addTask": "Create Task"
 }

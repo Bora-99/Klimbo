@@ -4,6 +4,7 @@ import { Button, Tabs } from "../shared";
 import { TaskModal, TaskTable } from "./task";
 import { useDashboardTabs } from "../../hooks";
 import { KanbanBoard } from "./kanban";
+import { useTranslation } from "react-i18next";
 
 interface IRenderTabs {
   kanban: JSX.Element;
@@ -13,8 +14,8 @@ interface IRenderTabs {
 
 export const DashboardTabs: React.FC = () => {
   const { activeTab, setActiveTab, tabs, tasks } = useDashboardTabs();
-
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const renderTabs: IRenderTabs = useMemo(
     () => ({
@@ -34,7 +35,7 @@ export const DashboardTabs: React.FC = () => {
           activeTab={activeTab}
         />
         <Button onClick={() => setOpen(true)} types="primary">
-          Create Task
+          {t("addTask")}
         </Button>
       </div>
 

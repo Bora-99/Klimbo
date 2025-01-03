@@ -23,6 +23,13 @@
           "text": "test comment",
           "date": "2025-01-03T19:17:08.616Z"
         }
+      ],
+      "attachments": [
+        {
+          "id": "3f02cedb-ddb3-4096-9f10-af850c6f85a4",
+          "filename": "send.png",
+          "url": "blob:http://localhost:3001/d659156c-b6f2-4e31-87e4-3ee3981fc88c"
+        }
       ]
     }
   ],

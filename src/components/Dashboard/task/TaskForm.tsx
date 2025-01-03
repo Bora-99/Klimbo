@@ -13,8 +13,9 @@ import {
   useAppSelector,
 } from "../../../store";
 import { TextArea, Input, SelectInput } from "../../shared";
-import { ICommentsType, ITaskTypes } from "../../../types";
+import { ICommentsType, IFileAttachment, ITaskTypes } from "../../../types";
 import { TaskComments } from "./TaskComments";
+import { TaskAttachments } from "./TaskAttachments";
 
 interface ITaskFormProps {
   editMode?: ITaskTypes;
@@ -46,6 +47,20 @@ export const TaskForm: React.FC<ITaskFormProps> = ({
       dispatch(postTask(formData));
     }
     setOpen(false);
+  };
+
+  const addNewComments = (comment: ICommentsType) => {
+    setFormData((prev) => ({
+      ...prev,
+      comments: [...(prev.comments || []), comment],
+    }));
+  };
+
+  const addNewAttachment = (attachment: IFileAttachment) => {
+    setFormData((prev) => ({
+      ...prev,
+      attachments: [...(prev.attachments || []), attachment],
+    }));
   };
 
   const fieldProps = useCallback(
@@ -140,45 +155,15 @@ export const TaskForm: React.FC<ITaskFormProps> = ({
             <div className="col-span-full">
               <TaskComments
                 comments={formData?.comments}
-                addNewComments={(comment: ICommentsType) => {
-                  setFormData((prev) => ({
-                    ...prev,
-                    comments: [...(prev.comments || []), comment],
-                  }));
-                }}
+                addNewComments={addNewComments}
                 users={users}
               />
             </div>
-
             <div className="col-span-full">
-              <label
-                htmlFor="attachment"
-                className="block text-sm/6 font-medium text-gray-900"
-              >
-                Attach a file
-              </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div className="text-center">
-                  <div className="mt-4 flex text-sm/6 text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        id="file-upload"
-                        name="file-upload"
-                        type="file"
-                        className="sr-only"
-                      />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs/5 text-gray-600">
-                    PNG, JPG, GIF up to 10MB
-                  </p>
-                </div>
-              </div>
+              <TaskAttachments
+                attachments={formData?.attachments}
+                addAttachment={addNewAttachment}
+              />
             </div>
           </div>
         </div>

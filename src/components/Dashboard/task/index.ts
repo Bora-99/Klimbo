@@ -3,3 +3,4 @@ export * from "./TaskTable";
 export * from "./TaskModal";
 export * from "./TaskForm";
 export * from "./TaskComments"
+export * from "./TaskAttachments";
