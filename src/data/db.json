@@ -1,65 +1,45 @@
 {
   "tasks": [
     {
-      "id": 1,
+      "id": "473e2aec-990c-4486-a0a5-8f15916ce1ea",
       "title": "First Task",
-      "description": "This is the first test Task",
-      "dueDate": "2024-12-31T23:59:59.000Z",
-      "priority": "High",
-      "assign": "Bora Selenica",
-      "reporter": "Lori Selenica",
-      "type": "Feature",
-      "comments": "New Feature for Task Management",
-      "attachment": "photo",
-      "status": "In Progress"
-    },
-    {
-      "id": 2,
-      "title": "Second Task",
-      "description": "This is the second test Task",
-      "dueDate": "2024-12-31T23:59:59.000Z",
+      "description": "Create filter for filtering tasks",
+      "dueDate": "2023-12-31",
       "priority": "Medium",
-      "assign": "Lori Selenica",
-      "reporter": "BR Selenica",
+      "assign": "",
+      "reporter": "",
       "type": "Feature",
-      "comments": "New Feature for Task Management",
-      "attachment": "file",
-      "status": "In Review"
-    },
-    {
-      "id": 3,
-      "title": "Create Filter Component",
-      "description": "Create Filter Component for Task Management, global filet...",
-      "dueDate": "2025-01-05T23:59:59.000Z",
-      "priority": "Low",
-      "assign": "Eni Selenica",
-      "reporter": "BR Selenica",
-      "type": "Bug",
-      "comments": "New Feature for Task Management",
-      "attachment": "file",
-      "status": "In Review"
-    },
-    {
-      "id": 4,
-      "title": "Create Kanban Component",
-      "description": "Create kanban Component for Task Management.",
-      "dueDate": "2025-04-05T23:59:59.000Z",
-      "priority": "High",
-      "assign": "user1",
-      "reporter": "BR Selenica",
-      "type": "Feature",
-      "comments": "New Feature for Task Management",
-      "attachment": "file",
-      "status": "Done"
+      "attachment": "",
+      "status": "In Progress",
+      "linkedIssues": "Relates To",
+      "comments": [
+        {
+          "author": "boratest",
+          "text": "this task need an update",
+          "date": "2025-01-03T19:17:05.429Z"
+        },
+        {
+          "author": "usertest",
+          "text": "test comment",
+          "date": "2025-01-03T19:17:08.616Z"
+        }
+      ]
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "boratest",
       "password": "test",
       "email": "test@gmail.com",
       "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "usertest",
+      "password": "usertest",
+      "email": "user@gmail.com",
+      "role": "user"
     }
   ]
 }
