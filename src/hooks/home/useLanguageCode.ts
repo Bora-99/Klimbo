@@ -13,5 +13,6 @@ export const useLanguageCode = () => {
   );
   return {
     changeLanguage,
+    i18n,
   };
 };

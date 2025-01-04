@@ -1,6 +1,5 @@
 import React from "react";
 import Flag from "react-world-flags";
-import { useTranslation } from "react-i18next";
 import { Input } from "../shared";
 import { useLanguageCode } from "../../hooks";
 
@@ -11,8 +10,7 @@ interface ILanguageSwitcherProps {
 export const LanguageSwitcher: React.FC<ILanguageSwitcherProps> = ({
   expanded,
 }) => {
-  const { changeLanguage } = useLanguageCode();
-  const { i18n } = useTranslation();
+  const { changeLanguage, i18n } = useLanguageCode();
 
   return (
     <div className="flex flex-col justify-between pl-3">

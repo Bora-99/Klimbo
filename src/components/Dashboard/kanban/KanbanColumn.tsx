@@ -16,7 +16,7 @@ export const KanbanColumn: React.FC<ColumnProps> = ({ id, title, items }) => {
         <div
           ref={provided.innerRef}
           {...provided.droppableProps}
-          className="bg-gray-100 p-4 rounded-lg min-w-64 min-h-[600px]"
+          className="bg-gray-100 p-4 rounded-lg w-[17rem] h-[85vh] overflow-y-auto"
         >
           <h3 className="text-lg font-semibold mb-4">{title}</h3>
           {items.map((item, index) => (

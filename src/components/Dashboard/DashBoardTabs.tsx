@@ -28,7 +28,7 @@ export const DashboardTabs: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap">
         <Tabs
           tabs={tabs}
           onTabClick={(tab) => setActiveTab(tab.id as keyof IRenderTabs)}

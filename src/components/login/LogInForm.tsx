@@ -70,14 +70,6 @@ export default function LoginForm() {
               >
                 Password
               </label>
-              <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot password?
-                </a>
-              </div>
             </div>
             <div className="mt-2">
               <input
@@ -99,7 +91,7 @@ export default function LoginForm() {
               Sign in
             </button>
           </div>
-          {errorMessage}
+          <div className="text-center font-bold text-sm/6">{errorMessage}</div>
         </form>
       </div>
     </div>

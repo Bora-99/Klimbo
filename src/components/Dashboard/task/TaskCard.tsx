@@ -27,16 +27,20 @@ export const TaskCard: React.FC<TaskCardProps> = ({ item }) => {
 
   return (
     <>
-      <div className="w-64 min-h-48 rounded overflow-hidden shadow-lg bg-white border border-gray-200 p-4">
+      <div className="min-h-48 rounded overflow-hidden shadow-lg bg-white border border-gray-200 p-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+          <h3 className="text-xl font-semibold text-gray-800 overflow-hidden text-ellipsis whitespace-normal">
+            {title}
+          </h3>
           <span
             className={`text-xs font-bold px-2 py-1 rounded ${backgroundColor}`}
           >
             {priority}
           </span>
         </div>
-        <p className="text-gray-600 mt-2">{description}</p>
+        <p className="text-gray-600 mt-2 overflow-hidden text-ellipsis whitespace-normal">
+          {description}
+        </p>
         <div className="mt-4 flex justify-between items-center">
           <span className="text-sm font-medium px-3 py-1 bg-blue-100 text-blue-600 rounded-full">
             {type}

@@ -47,7 +47,9 @@ export const TaskTable: React.FC<TaskTableProps> = ({ tasks }) => {
           <tbody>
             {filteredTasks.map((task) => (
               <tr key={task.id} className="border-t border-gray-200">
-                <td className="px-4 py-2 text-gray-700">{task.title}</td>
+                <td className="px-4 py-2 text-gray-700 overflow-hidden text-ellipsis whitespace-normal max-w-72">
+                  {task.title}
+                </td>
                 <td className="px-4 py-2 text-gray-700">
                   {new Date(task.dueDate).toLocaleDateString()}
                 </td>

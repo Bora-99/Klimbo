@@ -16,6 +16,7 @@ import { TextArea, Input, SelectInput } from "../../shared";
 import { ICommentsType, IFileAttachment, ITaskTypes } from "../../../types";
 import { TaskComments } from "./TaskComments";
 import { TaskAttachments } from "./TaskAttachments";
+import { v4 as uuidv4 } from "uuid";
 
 interface ITaskFormProps {
   editMode?: ITaskTypes;
@@ -41,10 +42,17 @@ export const TaskForm: React.FC<ITaskFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const taskData = {
+      ...formData,
+      id: formData?.id || uuidv4(),
+      assign: formData?.assign || users[0].username,
+      reporter: formData?.reporter || users[0].username,
+    };
     if (editMode) {
-      dispatch(editTask(formData));
+      dispatch(editTask(taskData));
     } else {
-      dispatch(postTask(formData));
+      dispatch(postTask(taskData));
     }
     setOpen(false);
   };
@@ -103,7 +111,12 @@ export const TaskForm: React.FC<ITaskFormProps> = ({
             </div>
 
             <div className="sm:col-span-3">
-              <Input label="Due Date" type="date" {...fieldProps("dueDate")} />
+              <Input
+                label="Due Date"
+                type="date"
+                min={new Date().toJSON().slice(0, 10)}
+                {...fieldProps("dueDate")}
+              />
             </div>
 
             <div className="sm:col-span-3">
@@ -157,12 +170,14 @@ export const TaskForm: React.FC<ITaskFormProps> = ({
                 comments={formData?.comments}
                 addNewComments={addNewComments}
                 users={users}
+                viewMode={viewMode}
               />
             </div>
             <div className="col-span-full">
               <TaskAttachments
                 attachments={formData?.attachments}
                 addAttachment={addNewAttachment}
+                viewMode={viewMode}
               />
             </div>
           </div>

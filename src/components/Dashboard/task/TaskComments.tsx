@@ -8,11 +8,13 @@ interface TaskCommentsProps {
   comments?: ICommentsType[];
   addNewComments: (comment: ICommentsType) => void;
   users: IUserTypes[];
+  viewMode?: boolean;
 }
 
 export const TaskComments: React.FC<TaskCommentsProps> = ({
   comments,
   addNewComments,
+  viewMode,
   users,
 }) => {
   const { newComment, handleCommentChange, handleAddComment } =
@@ -26,6 +28,7 @@ export const TaskComments: React.FC<TaskCommentsProps> = ({
         value={newComment}
         onChange={handleCommentChange}
         className="w-full px-3 py-2 border rounded"
+        disabled={viewMode}
       >
         <Mention
           trigger="@"
@@ -39,6 +42,7 @@ export const TaskComments: React.FC<TaskCommentsProps> = ({
         type="button"
         onClick={handleAddComment}
         className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+        disabled={viewMode}
       >
         {t("addComment")}
       </button>

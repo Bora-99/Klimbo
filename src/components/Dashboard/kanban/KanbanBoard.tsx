@@ -7,7 +7,7 @@ export const KanbanBoard: React.FC = () => {
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center gap-4 flex-wrap">
         {columns.map((column) => (
           <KanbanColumn
             key={column.id}

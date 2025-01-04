@@ -12,10 +12,12 @@ import { useMemo } from "react";
 import { SelectInput } from "../shared";
 import { LanguageOptions } from "../../constants";
 import { useHomePage, useLanguageCode } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
-  const { changeLanguage } = useLanguageCode();
+  const { changeLanguage, i18n } = useLanguageCode();
   const { user } = useHomePage();
+  const navigate = useNavigate();
 
   const navigation = useMemo(
     () => [
@@ -46,15 +48,15 @@ export const Navbar: React.FC = () => {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <div
                     key={item.name}
-                    href={item.href}
+                    onClick={() => navigate(item.href)}
                     className={
                       "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                     }
                   >
                     {item.name}
-                  </a>
+                  </div>
                 ))}
               </div>
             </div>
@@ -63,7 +65,8 @@ export const Navbar: React.FC = () => {
             <SelectInput
               id={"language"}
               options={LanguageOptions}
-              label={""}
+              label={ "" }
+              value={i18n.language}
               onChange={(e) => changeLanguage(e.target.value)}
             />
             <Menu as="div" className="relative ml-3">

@@ -5,12 +5,14 @@ import { IFileAttachment } from "../../../types";
 
 interface AttachmentsSectionProps {
   attachments?: IFileAttachment[];
-  addAttachment: (attachment: IFileAttachment) => void;
+  addAttachment: ( attachment: IFileAttachment ) => void;
+  viewMode?: boolean;
 }
 
 export const TaskAttachments: React.FC<AttachmentsSectionProps> = ({
   attachments,
   addAttachment,
+  viewMode,
 }) => {
   const [newFile, setNewFile] = useState<File | null>(null);
   const { t } = useTranslation();
@@ -40,10 +42,12 @@ export const TaskAttachments: React.FC<AttachmentsSectionProps> = ({
       </label>
       <input
         type="file"
+        disabled={viewMode}
         onChange={handleFileChange}
         className="w-full px-3 py-2 border rounded"
       />
       <button
+        disabled={viewMode}
         type="button"
         onClick={handleAddFile}
         className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"

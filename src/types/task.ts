@@ -8,7 +8,7 @@ export interface ITaskTypes {
   reporter: string;
   type: "Feature" | "Bug" | "Research";
   comments?: ICommentsType[];
-  attachments: IFileAttachment[];
+  attachments?: IFileAttachment[];
   status: "To Do" | "In Progress" | "In Review" | "Done";
   linkedIssues: "Blocks" | "Is Blocked By" | "Relates To";
 }

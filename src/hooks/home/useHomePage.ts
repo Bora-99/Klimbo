@@ -1,9 +1,7 @@
 import { useMemo } from "react";
 import { useAppSelector, RootState } from "../../store";
-import { useFetchTask } from "../useFetchTasks";
 
 export const useHomePage = () => {
-  useFetchTask();
   const tasks = useAppSelector((state: RootState) => state.tasks.tasks);
 
   const user = JSON.parse(sessionStorage.getItem("user") ?? "");

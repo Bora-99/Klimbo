@@ -32,7 +32,7 @@ export const LanguageOptions = [
 export const tabletBreakpoint = 1300;
 
 export const InitialTask: ITaskTypes = {
-  id: uuidv4(),
+  id: "",
   title: "",
   description: "",
   dueDate: "",
@@ -40,7 +40,6 @@ export const InitialTask: ITaskTypes = {
   assign: "",
   reporter: "",
   type: "Feature",
-  attachment: "",
   status: "To Do",
   linkedIssues: "Relates To",
 };
